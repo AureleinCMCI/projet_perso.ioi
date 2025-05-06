@@ -93,7 +93,7 @@ async function getItem(id) {
 async function storeItem(item) {
     return new Promise((acc, rej) => {
         pool.query(
-            'INSERT INTO todo_items (id, name, completed) VALUES (?, ?, ?)',
+            'INSERT INTO users (id, username, password , email) VALUES (?, ?, ?)',
             [item.id, item.name, item.completed ? 1 : 0],
             (err) => {
                 if (err) return rej(err);

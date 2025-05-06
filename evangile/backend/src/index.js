@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
 const db = require('./persistence');
-const getGreeting = require('./routes/getGreeting');
-const getItems = require('./routes/getItems');
-const addItem = require('./routes/addItem');
-const updateItem = require('./routes/updateItem');
-const deleteItem = require('./routes/deleteItem');
+const bcrypt = require('bcrypt'); // Import de bcrypt ajouté
+const signupRoute = require('./routes/Signup');
 const loginRoute = require('./routes/login');
 const mysqlDb = require('./persistence/mysql');
 
@@ -13,11 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname + '/static'));
 
 app.use('/api', loginRoute);
-app.get('/api/greeting', getGreeting);
-app.get('/api/items', getItems);
-app.post('/api/items', addItem);
-app.put('/api/items/:id', updateItem);
-app.delete('/api/items/:id', deleteItem);
+app.use('/api', signupRoute);
 
 async function startServer() {
     try {

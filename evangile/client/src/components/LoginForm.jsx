@@ -7,7 +7,9 @@ function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate(); 
+
+
+  const navigate = useNavigate();
   // Pour l'animation du container (équivalent du JS vanilla)
   const [rightPanelActive, setRightPanelActive] = useState(false);
 
@@ -30,6 +32,35 @@ function LoginForm() {
       setMessage(err.message);
     }
   };
+  // Gestion du submit (inscription)
+
+
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: signupName,
+          email: signupEmail,
+          password: signupPassword
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Erreur lors de l\'inscription');
+
+      setMessage('Inscription réussie ! Connecte-toi');
+      setRightPanelActive(false); // Retourne au formulaire de connexion
+    } catch (err) {
+      setMessage(err.message);
+    }
+  };
 
   return (
     <div>
@@ -39,7 +70,7 @@ function LoginForm() {
       <div className={`container${rightPanelActive ? ' right-panel-active' : ''}`} id="container">
         {/* Sign Up */}
         <div className="form-container sign-up-container">
-          <form>
+          <form onSubmit={handleSignUp}>
             <h1>Create Account</h1>
             <div className="social-container">
               <a href="#" className="social"><i className="fab fa-facebook-f"></i></a>
@@ -47,12 +78,29 @@ function LoginForm() {
               <a href="#" className="social"><i className="fab fa-linkedin-in"></i></a>
             </div>
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button type="button">Sign Up</button>
+            <input
+              type="text"
+              placeholder="Name"
+              value={signupName}
+              onChange={(e) => setSignupName(e.target.value)}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={signupEmail}
+              onChange={(e) => setSignupEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={signupPassword}
+              onChange={(e) => setSignupPassword(e.target.value)}
+            />
+            <button type="submit">Sign Up</button>
+            {message && <p>{message}</p>}
           </form>
         </div>
+
         {/* Sign In */}
         <div className="form-container sign-in-container">
           <form onSubmit={handleSubmit}>

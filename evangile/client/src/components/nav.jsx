@@ -22,7 +22,7 @@ function Nav() {
         {/* Ajoute d'autres liens ici */}
       </nav>
       {/* Overlay pour fermer le menu en cliquant à côté */}
-      {open && <div className="overlay" onClick={() => setOpen(false)}></div>}
+      {open && <div className="nav-overlay" onClick={() => setOpen(false)}></div>}
     </div>
   );
 }
