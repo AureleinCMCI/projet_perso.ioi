@@ -34,7 +34,7 @@ function AppContent() {
 
 function App() {
   return (
-    <BrowserRouter basename="/projet_perso.io"> {/* Ajout du basename */}
+    <BrowserRouter basename="/projet_perso.ioi"> {/* Ajout du basename */}
       <AppContent />
     </BrowserRouter>
   );
