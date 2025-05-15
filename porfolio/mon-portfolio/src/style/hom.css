@@ -1,0 +1,130 @@
+
+body {
+    overflow-x: hidden;
+  }
+
+.home-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: visible; /* Permet de défiler verticalement */
+  }
+  
+  .bg-video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding-top: 30vh;
+    font-size: 50px;
+  }
+
+  /*ICONE*/
+  .mouse-icon {
+	position: absolute;
+	left: 50%;
+	bottom: 75px;
+	border: 2px solid #fff;
+	border-radius: 0px 0px 50px 50px;
+	height: 50px;
+	width: 30px;
+	margin-left: -15px;
+	display: block;
+	z-index: 10;
+	opacity: 0.4;
+}
+
+.mouse-icon .wheel {
+	-webkit-animation-name: drop;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-play-state: running;
+	animation-name: drop;
+	animation-duration: 1s;
+	animation-timing-function: linear;
+	animation-delay: 0s;
+	animation-iteration-count: infinite;
+	animation-play-state: running;
+}
+
+.mouse-icon .wheel {
+	position: relative;
+	border-radius: 10px;
+	background: #f4f4f4;
+	width: 4px;
+	height: 10px;
+	top: 6px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+@-webkit-keyframes drop	{
+	0%   { top:5px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+
+@keyframes drop	{
+	0%   { top:5px;  opacity: 0;}
+	30%  { top:10px; opacity: 1;}
+	100% { top:25px; opacity: 0;}
+}
+.well-md {
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem; }
+  @media (min-width: 1200px) {
+    .well-md {
+      padding-top: 0.97rem;
+      padding-bottom: 0.97rem; }
+ }
+ .intro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 2;
+  color: #fff;
+  width: 90vw;
+  max-width: 600px;
+}
+
+.hello {
+  font-size: 1.2rem;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.scroll-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  margin: 0.2em 0 0.4em 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  /* Ajoute d'autres styles si besoin */
+}
+
+.who-creates {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.85;
+  margin-top: 0.5em;
+}
